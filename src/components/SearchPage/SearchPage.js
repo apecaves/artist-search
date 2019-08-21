@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getArtists } from '../../services/musicBrainsApi';
+import Artists from '../Artists/Artists';
 
 export default class SearchPage extends Component {
   state = {
@@ -21,18 +22,21 @@ export default class SearchPage extends Component {
   };
 
   render() {
-    const { text } = this.state;
+    const { text, artists } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          value={text}
-          name="text"
-          onChange={this.handleChange}
-        />
-        <button>Search</button>
-      </form>
+      <>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            value={text}
+            name="text"
+            onChange={this.handleChange}
+          />
+          <button>Search</button>
+        </form>
+        <Artists artistList={artists}/>
+      </>
     );
   }
 }
