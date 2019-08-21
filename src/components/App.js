@@ -1,7 +1,7 @@
 import React from 'react';
-import SearchInput from './SearchInput/SearchInput';
+import SearchPage from './SearchPage/SearchPage';
 
 export default function App() {
-  return <SearchInput />;
+  return <SearchPage />;
 }
   
