@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { getArtists } from '../../services/musicBrainsApi';
 
 export default class SearchPage extends Component {
   state = {
-    text: ''
-    // empty array state
+    text: '',
+    artists: []
   };
 
   handleChange = ({ target }) => {
@@ -11,10 +12,12 @@ export default class SearchPage extends Component {
   };
 
   handleSubmit = event => {
+    const { text } = this.state;
     event.preventDefault();
-    // api call here! 
-    // set state for empty array
-    console.log(this.state);
+    return getArtists(text)
+      .then(({ artists }) => {
+        this.setState({ artists });
+      });
   };
 
   render() {
