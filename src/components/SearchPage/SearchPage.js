@@ -5,7 +5,8 @@ import Artists from '../Artists/Artists';
 export default class SearchPage extends Component {
   state = {
     text: '',
-    artists: []
+    artists: [],
+    page: 1
   };
 
   handleChange = ({ target }) => {
@@ -13,9 +14,26 @@ export default class SearchPage extends Component {
   };
 
   handleSubmit = event => {
-    const { text } = this.state;
+    const { text, page } = this.state;
     event.preventDefault();
-    return getArtists(text)
+    return getArtists(text, page).then(({ artists }) => {
+      this.setState({ artists, page: 1 });
+    });
+  };
+
+  handleIncrement = () => {
+    const { text, page } = this.state;
+    this.setState({ page: Number.parseInt(page + 1) });
+    return getArtists(text, page + 1)
+      .then(({ artists }) => {
+        this.setState({ artists });
+      });
+  };
+
+  handleDecrement = () => {
+    const { text, page } = this.state;
+    this.setState({ page: Number.parseInt(page - 1) });
+    return getArtists(text, page - 1)
       .then(({ artists }) => {
         this.setState({ artists });
       });
@@ -35,7 +53,9 @@ export default class SearchPage extends Component {
           />
           <button>Search</button>
         </form>
-        <Artists artistList={artists}/>
+        <button onClick={this.handleDecrement}>⬸</button>
+        <button onClick={this.handleIncrement}>⤑</button>
+        <Artists artistList={artists} />
       </>
     );
   }
