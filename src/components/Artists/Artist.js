@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function Artist({ artist }) {
   return (
     <>
-      <p>{artist.name}</p>
+      <Link to="/:artist/:id">{artist.name}</Link>
+      {/* <p>{artist.name}</p> */}
     </>
   );
 }
