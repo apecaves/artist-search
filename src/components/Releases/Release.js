@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import placeholder from '../../../assets/cover-art-placeholder.jpg';
 
 function Release({ release }) {
-  const imgURL = `http://coverartarchive.org/release/${release.id}/front`;
+  const imgURL = release['cover-art-archive'].front ? `http://coverartarchive.org/release/${release.id}/front` : placeholder;
   return (
     <>
       <p>{release.title}</p>
@@ -18,7 +19,8 @@ Release.propTypes = {
     title: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
-    country: PropTypes.string.isRequired
+    country: PropTypes.string.isRequired,
+    'cover-art-archive': PropTypes.object.isRequired
   }).isRequired
 };
 
