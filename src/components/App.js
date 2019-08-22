@@ -6,8 +6,8 @@ import ReleasesContainer from './Releases/ReleasesContainer';
 export default function App() {
   return (
     <Router>
-      <Route path="/" component={SearchPage} />
-      <Route path="/:artist/:id" component={ReleasesContainer} />
+      <Route exact path="/" component={SearchPage} />
+      <Route path="/artist/:id" component={ReleasesContainer} />
     </Router>
   );
 }

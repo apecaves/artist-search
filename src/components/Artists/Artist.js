@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 function Artist({ artist }) {
   return (
     <>
-      <Link to="/:artist/:id">{artist.name}</Link>
-      {/* <p>{artist.name}</p> */}
+      <Link to={`/artist/${artist.id}`}>{artist.name}</Link>
     </>
   );
 }
 
 Artist.propTypes = {
   artist: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
   }).isRequired
 };
