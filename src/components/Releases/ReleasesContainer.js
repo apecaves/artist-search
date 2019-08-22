@@ -46,7 +46,7 @@ export default class ReleasesContainer extends Component {
       <>
         <button onClick={this.handleDecrement}>⬸</button>
         <button onClick={this.handleIncrement}>⤑</button>
-        <Releases releaseList={releases}/>
+        <Releases releaseList={releases} artistName={this.props.match.params.artistname}/>
       </>
     );
   }
