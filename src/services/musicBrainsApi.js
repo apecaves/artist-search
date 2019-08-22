@@ -6,7 +6,7 @@ export const getArtists = (artist, page) => {
     });
 };
 
-export const getArtistView = (id) => {
+export const getReleaseList = (id) => {
   return fetch(`http://musicbrainz.org/ws/2/release?artist=${id}&fmt=json`)
     .then(res => {
       if(!res.ok) throw 'Unable to fetch their releases';
