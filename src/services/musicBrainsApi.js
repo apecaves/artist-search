@@ -13,3 +13,16 @@ export const getReleaseList = (id, page) => {
       return res.json();
     });
 };
+
+export const getSongList = (id) => {
+  return fetch(`http://musicbrainz.org/ws/2/recording?release=${id}&fmt=json`)
+    .then(res => {
+      if(!res.ok) throw 'Unable to fetch their songs';
+      return res.json();
+    })
+    .then(res => {
+      return {
+        songs: res.recordings
+      };
+    });
+};
