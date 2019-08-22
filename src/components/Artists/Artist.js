@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Artist({ artist }) {
   return (
     <>
-      <Link to={`/artist/${artist.id}`}>{artist.name}</Link>
+      <Link to={`/artist/${artist.name}/${artist.id}`}>{artist.name}</Link>
     </>
   );
 }
