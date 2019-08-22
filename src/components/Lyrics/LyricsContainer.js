@@ -17,7 +17,6 @@ export default class LyricsContainer extends Component {
       this.props.match.params.artistname,
       this.props.match.params.title
     ).then(({ lyrics }) => {
-      console.log(this.props.match);
       this.setState({ lyrics });
     });
   };

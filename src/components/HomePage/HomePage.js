@@ -6,7 +6,8 @@ export default class HomePage extends Component {
   state = {
     text: '',
     artists: [],
-    page: 1
+    page: 1,
+    totalPages: ''
   };
 
   handleChange = ({ target }) => {
@@ -26,8 +27,11 @@ export default class HomePage extends Component {
     const { text, page } = this.state;
     this.setState({ page: Number.parseInt(page + 1) });
     return getArtists(text, page + 1)
-      .then(({ artists }) => {
-        this.setState({ artists });
+      .then(({ artists, count }) => {
+        this.setState({ 
+          artists: artists,
+          totalPages: Math.ceil(count / 10)
+        });
       });
   };
 
@@ -35,13 +39,16 @@ export default class HomePage extends Component {
     const { text, page } = this.state;
     this.setState({ page: Number.parseInt(page - 1) });
     return getArtists(text, page - 1)
-      .then(({ artists }) => {
-        this.setState({ artists });
+      .then(({ artists, count }) => {
+        this.setState({ 
+          artists: artists,
+          totalPages: Math.ceil(count / 10)
+        });
       });
   };
 
   render() {
-    const { text, artists } = this.state;
+    const { text, artists, totalPages } = this.state;
 
     return (
       <>
@@ -54,8 +61,9 @@ export default class HomePage extends Component {
           />
           <button>Search</button>
         </form>
-        <button onClick={this.handleDecrement}>⬸</button>
-        <button onClick={this.handleIncrement}>⤑</button>
+        <button onClick={this.handleDecrement} disabled={this.state.page === 1}>⬸</button>
+        <button onClick={this.handleIncrement} disabled={this.state.page === totalPages}>⤑</button>
+    
         <Artists artistList={artists} />
       </>
     );
