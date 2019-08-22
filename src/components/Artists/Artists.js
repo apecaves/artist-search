@@ -15,7 +15,7 @@ function Artists({ artistList }) {
 }
 
 Artists.propTypes = {
-  artistList: PropTypes.arrayOf(PropTypes.string).isRequired
+  artistList: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default Artists;
