@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import placeholder from '../../../assets/cover-art-placeholder.jpg';
+import { Link } from 'react-router-dom';
 
 function Release({ release }) {
   const imgURL = release['cover-art-archive'].front ? `http://coverartarchive.org/release/${release.id}/front` : placeholder;
   return (
     <>
-      <p>{release.title}</p>
+      <Link to={`/release/${release.id}`}>{release.title}</Link>
       <p>{release.date}</p>
       <p>{release.country}</p>
-      <img src={imgURL} />
+      <Link to={`/release/${release.id}`}>
+        <img src={imgURL} />
+      </Link>
+  
     </>
   );
 }
@@ -19,7 +23,7 @@ Release.propTypes = {
     title: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     date: PropTypes.string.isRequired,
-    country: PropTypes.string.isRequired,
+    country: PropTypes.string,
     'cover-art-archive': PropTypes.object.isRequired
   }).isRequired
 };
