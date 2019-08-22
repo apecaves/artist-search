@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 function Song({ song }) {
-  return <p>{song.title}</p>;
+  return <Link to={`/song/${song.title}`}>{song.title}</Link>;
 }
 
 Song.propTypes = {
