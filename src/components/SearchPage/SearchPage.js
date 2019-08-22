@@ -16,9 +16,10 @@ export default class SearchPage extends Component {
   handleSubmit = event => {
     const { text, page } = this.state;
     event.preventDefault();
-    return getArtists(text, page).then(({ artists }) => {
-      this.setState({ artists, page: 1 });
-    });
+    return getArtists(text, page)
+      .then(({ artists }) => {
+        this.setState({ artists, page: 1 });
+      });
   };
 
   handleIncrement = () => {

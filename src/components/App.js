@@ -11,3 +11,6 @@ export default function App() {
     </Router>
   );
 }
+
+// next route will be to release container 
+// path="/artist/releases/:id"
