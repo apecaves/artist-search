@@ -6,7 +6,7 @@ function Releases({ releaseList, artistName }) {
   const releaseItem = releaseList.map(release => {
     return (
       <li key={release.id}>
-        <Release release={release} artistName={artistName}/>
+        <Release release={release} artistName={artistName} />
       </li>
     );
   });

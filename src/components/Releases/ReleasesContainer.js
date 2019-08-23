@@ -37,8 +37,9 @@ export default class ReleasesContainer extends Component {
 
     return (
       <>
+        <h1>Releases for {this.props.match.params.artistName}</h1>
         <Paging handlePageChange={this.handlePageChange} totalPages={totalPages} page={page}/>
-        <Releases releaseList={releases} artistName={this.props.match.params.artistName}/>
+        <Releases releaseList={releases} artistName={this.props.match.params.artistName} />
       </>
     );
   }

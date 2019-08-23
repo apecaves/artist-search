@@ -10,10 +10,10 @@ function Release({ release, artistName }) {
 
   return (
     <>
-      <Link to={`/release/${artistName}/${release.id}`}>{release.title}</Link>
+      <Link to={`/release/${artistName}/${release.title}/${release.id}`}>{release.title}</Link>
       <p>{release.date}</p>
       <p>{release.country}</p>
-      <Link to={`/release/${artistName}/${release.id}`}>
+      <Link to={`/release/${artistName}/${release.title}/${release.id}`}>
         <img src={imgURL} />
       </Link>
     </>

@@ -10,8 +10,8 @@ export default function App() {
     <Router>
       <Route exact path="/" component={HomePage} />
       <Route path="/artist/:artistName/:id" component={ReleasesContainer} />
-      <Route path="/release/:artistName/:id" component={SongsContainer} />
-      <Route path="/song/:artistName/:title" component={LyricsContainer} />
+      <Route path="/release/:artistName/:releaseName/:id" component={SongsContainer} />
+      <Route path="/song/:artistName/:releaseName/:title" component={LyricsContainer} />
     </Router>
   );
 }
