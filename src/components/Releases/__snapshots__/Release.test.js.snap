@@ -3,12 +3,12 @@
 exports[`Release component renders Release 1`] = `
 <Fragment>
   <Link
-    to="/release//"
+    to="/release///"
   />
   <p />
   <p />
   <Link
-    to="/release//"
+    to="/release///"
   >
     <img
       src="/path/image"

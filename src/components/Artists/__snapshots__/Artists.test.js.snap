@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Artists component renders Artists 1`] = `<ul />`;
+exports[`Artists component renders Artists 1`] = `
+<ul>
+  <li>
+    <Artist
+      artist={Object {}}
+    />
+  </li>
+</ul>
+`;

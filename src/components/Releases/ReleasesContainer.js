@@ -3,6 +3,7 @@ import Releases from './Releases';
 import { getReleaseList } from '../../services/musicBrainsApi';
 import PropTypes from 'prop-types';
 import Paging from '../Paging';
+import styles from './Releases.css';
 
 export default class ReleasesContainer extends Component {
   static propTypes = {
@@ -37,7 +38,7 @@ export default class ReleasesContainer extends Component {
 
     return (
       <>
-        <h1>Releases for {this.props.match.params.artistName}</h1>
+        <h1 className={styles.bandName}>Releases for {this.props.match.params.artistName}</h1>
         <Paging handlePageChange={this.handlePageChange} totalPages={totalPages} page={page}/>
         <Releases releaseList={releases} artistName={this.props.match.params.artistName} />
       </>

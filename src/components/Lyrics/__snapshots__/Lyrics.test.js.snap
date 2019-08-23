@@ -2,6 +2,6 @@
 
 exports[`Lyrics component renders Lyrics 1`] = `
 <Fragment>
-  <p />
+  <pre />
 </Fragment>
 `;

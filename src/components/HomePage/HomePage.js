@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getArtists } from '../../services/musicBrainsApi';
 import Artists from '../Artists/Artists';
 import Paging from '../Paging';
+import styles from './HomePage.css';
 
 export default class HomePage extends Component {
   state = {
@@ -20,7 +21,7 @@ export default class HomePage extends Component {
     event.preventDefault();
     return getArtists(text, page)
       .then(({ artists, count }) => {
-        this.setState({ artists, page: 1, totalPages: Math.ceil(count / 10) });
+        this.setState({ artists, page: 1, totalPages: Math.ceil(count / 24) });
       });
   };
 
@@ -29,7 +30,7 @@ export default class HomePage extends Component {
     this.setState({ page: Number.parseInt(page + operator) });
     return getArtists(text, page + operator)
       .then(({ artists, count }) => {
-        this.setState({ artists, totalPages: Math.ceil(count / 10) });
+        this.setState({ artists, totalPages: Math.ceil(count / 24) });
       });
   };
 
@@ -37,7 +38,8 @@ export default class HomePage extends Component {
     const { text, artists, totalPages, page } = this.state;
 
     return (
-      <>
+      <section className={styles.HomePage}>
+        <h1>Search for Your Favourite Artist!</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -49,7 +51,7 @@ export default class HomePage extends Component {
         </form>
         <Paging handlePageChange={this.handlePageChange} totalPages={totalPages} page={page}/>
         <Artists artistList={artists} />
-      </>
+      </section>
     );
   }
 }

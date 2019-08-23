@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import placeholder from '../../../assets/cover-art-placeholder.jpg';
 import { Link } from 'react-router-dom';
+import styles from './Release.css';
 
 function Release({ release, artistName }) {
   const imgURL = release['cover-art-archive'].front
@@ -9,14 +10,14 @@ function Release({ release, artistName }) {
     : placeholder;
 
   return (
-    <>
-      <Link to={`/release/${artistName}/${release.title}/${release.id}`}>{release.title}</Link>
+    <section className={styles.Release}>
+      <Link className={styles.Release} to={`/release/${artistName}/${release.title}/${release.id}`}>{release.title}</Link>
       <p>{release.date}</p>
       <p>{release.country}</p>
       <Link to={`/release/${artistName}/${release.title}/${release.id}`}>
         <img src={imgURL} />
       </Link>
-    </>
+    </section>
   );
 }
 

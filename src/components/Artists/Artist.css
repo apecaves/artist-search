@@ -1,0 +1,13 @@
+.Artist {
+  color: black;
+  text-decoration: none;
+  &:focus,
+  &:visited,
+  &:link,
+  &:active {
+    text-decoration: none;
+  }
+  &:hover {
+    color: grey;
+  }
+}

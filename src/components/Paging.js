@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from './Paging.css';
 
 function Paging({ handlePageChange, totalPages, page }) {
   return (
-    <>
+    <section className={styles.Paging}>
       <button
         onClick={() => handlePageChange(-1)}
         disabled={page === 1}
@@ -17,7 +18,7 @@ function Paging({ handlePageChange, totalPages, page }) {
       >
         ⤑
       </button>
-    </>
+    </section>
   );
 }
 

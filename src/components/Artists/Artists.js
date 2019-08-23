@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Artist from './Artist';
+import styles from './Artists.css';
 
 function Artists({ artistList }) {
   const artistItem = artistList.map(artist => {
@@ -11,7 +12,7 @@ function Artists({ artistList }) {
     );
   });
 
-  return <ul>{artistItem}</ul>;
+  return <ul className={styles.Artists}>{artistItem}</ul>;
 }
 
 Artists.propTypes = {
