@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Release component renders Release 1`] = `
+<section
+  className="Release"
+>
+  <Link
+    className="Release"
+    to="/release///"
+  />
+  <p />
+  <p />
+  <Link
+    to="/release///"
+  >
+    <img
+      src="/path/image"
+    />
+  </Link>
+</section>
+`;

@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Hepta+Slab&display=swap');
+
+.HomePage {
+  margin: 0 auto;
+
+  h1 {
+    color: rgb(81, 3, 155);
+    text-align: center;
+    font-family: 'Hepta Slab', serif;
+    font-size: 3em;
+    margin: 0 auto;
+  }
+
+  form {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+  }
+
+  input {
+    width: 20vw;
+    height: 5vh;
+    text-align: center;
+    border: 2px solid black;
+  }
+
+  button {
+    height: 6vh;
+    background: none;
+  }
+
+  ::-webkit-input-placeholder {
+    text-align: center;
+ }
+
+}
