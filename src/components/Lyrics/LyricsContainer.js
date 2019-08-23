@@ -26,6 +26,7 @@ export default class LyricsContainer extends Component {
 
     return (
       <>
+      <h1>{this.props.match.params.title}</h1>
         <Lyrics lyrics={lyrics} />
       </>
     );
