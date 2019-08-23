@@ -14,7 +14,7 @@ export default class LyricsContainer extends Component {
 
   componentDidMount = () => {
     return getLyrics(
-      this.props.match.params.artistname,
+      this.props.match.params.artistName,
       this.props.match.params.title
     ).then(({ lyrics }) => {
       this.setState({ lyrics });

@@ -22,6 +22,6 @@ export default class SongsContainer extends Component {
   render() {
     const { songs } = this.state;
 
-    return <Songs songList={songs} artistName={this.props.match.params.artistname}/>;
+    return <Songs songList={songs} artistName={this.props.match.params.artistName}/>;
   }
 }
