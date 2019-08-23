@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function Release({ release, artistName }) {
   const imgURL = release['cover-art-archive'].front
-    ? `http://coverartarchive.org/release/${release.id}/front`
+    ? `http://coverartarchive.org/release/${release.id}/front-250`
     : placeholder;
 
   return (
