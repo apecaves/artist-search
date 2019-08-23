@@ -1,5 +1,9 @@
+
+const NUMBER_PER_PAGE = 10;
+
 export const getArtists = (artist, page) => {
-  return fetch(`http://musicbrainz.org/ws/2/artist?query=${artist}&fmt=json&limit=10&offset=${(page - 1) * 10}`)
+  const offset = (page - 1) * NUMBER_PER_PAGE;
+  return fetch(`http://musicbrainz.org/ws/2/artist?query=${artist}&fmt=json&limit=10&offset=${offset}`)
     .then(res => {
       if(!res.ok) throw 'Unable to fetch that artist';
       return res.json();
@@ -7,7 +11,8 @@ export const getArtists = (artist, page) => {
 };
 
 export const getReleaseList = (id, page) => {
-  return fetch(`http://musicbrainz.org/ws/2/release?artist=${id}&fmt=json&limit=10&offset=${(page - 1) * 10}`)
+  const offset = (page - 1) * NUMBER_PER_PAGE;
+  return fetch(`http://musicbrainz.org/ws/2/release?artist=${id}&fmt=json&limit=10&offset=${offset}`)
     .then(res => {
       if(!res.ok) throw 'Unable to fetch their releases';
       return res.json();
