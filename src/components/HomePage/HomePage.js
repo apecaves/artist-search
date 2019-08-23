@@ -23,22 +23,11 @@ export default class HomePage extends Component {
       });
   };
 
-  handleIncrement = () => {
-    const { text, page } = this.state;
-    this.setState({ page: Number.parseInt(page + 1) });
-    return getArtists(text, page + 1)
-      .then(({ artists, count }) => {
-        this.setState({ 
-          artists: artists,
-          totalPages: Math.ceil(count / 10)
-        });
-      });
-  };
 
-  handleDecrement = () => {
+  handlePageChange = (operator) => {
     const { text, page } = this.state;
-    this.setState({ page: Number.parseInt(page - 1) });
-    return getArtists(text, page - 1)
+    this.setState({ page: Number.parseInt(page + operator) });
+    return getArtists(text, page + operator)
       .then(({ artists, count }) => {
         this.setState({ 
           artists: artists,
@@ -61,8 +50,8 @@ export default class HomePage extends Component {
           />
           <button>Search</button>
         </form>
-        <button onClick={this.handleDecrement} disabled={this.state.page === 1}>⬸</button>
-        <button onClick={this.handleIncrement} disabled={this.state.page === totalPages}>⤑</button>
+        <button onClick={() => this.handlePageChange(-1)} disabled={this.state.page === 1}>⬸</button>
+        <button onClick={() => this.handlePageChange(1)} disabled={this.state.page === totalPages}>⤑</button>
     
         <Artists artistList={artists} />
       </>
