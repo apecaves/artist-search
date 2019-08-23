@@ -7,6 +7,7 @@ function Release({ release, artistName }) {
   const imgURL = release['cover-art-archive'].front
     ? `http://coverartarchive.org/release/${release.id}/front`
     : placeholder;
+
   return (
     <>
       <Link to={`/release/${artistName}/${release.id}`}>{release.title}</Link>
@@ -31,3 +32,4 @@ Release.propTypes = {
 };
 
 export default Release;
+
