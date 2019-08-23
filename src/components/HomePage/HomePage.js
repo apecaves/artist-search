@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { getArtists } from '../../services/musicBrainsApi';
 import Artists from '../Artists/Artists';
+import Paging from '../Paging';
 
 export default class HomePage extends Component {
   state = {
     text: '',
     artists: [],
     page: 1,
-    totalPages: ''
+    totalPages: 0
   };
 
   handleChange = ({ target }) => {
@@ -18,25 +19,22 @@ export default class HomePage extends Component {
     const { text, page } = this.state;
     event.preventDefault();
     return getArtists(text, page)
-      .then(({ artists }) => {
-        this.setState({ artists, page: 1 });
+      .then(({ artists, count }) => {
+        this.setState({ artists, page: 1, totalPages: Math.ceil(count / 10) });
       });
   };
 
-  handlePageChange = (operator) => {
+  handlePageChange = operator => {
     const { text, page } = this.state;
     this.setState({ page: Number.parseInt(page + operator) });
     return getArtists(text, page + operator)
       .then(({ artists, count }) => {
-        this.setState({ 
-          artists: artists,
-          totalPages: Math.ceil(count / 10)
-        });
+        this.setState({ artists, totalPages: Math.ceil(count / 10) });
       });
   };
 
   render() {
-    const { text, artists, totalPages } = this.state;
+    const { text, artists, totalPages, page } = this.state;
 
     return (
       <>
@@ -49,9 +47,7 @@ export default class HomePage extends Component {
           />
           <button>Search</button>
         </form>
-        <button onClick={() => this.handlePageChange(-1)} disabled={this.state.page === 1}>⬸</button>
-        <button onClick={() => this.handlePageChange(1)} disabled={this.state.page === totalPages}>⤑</button>
-    
+        <Paging handlePageChange={this.handlePageChange} totalPages={totalPages} page={page}/>
         <Artists artistList={artists} />
       </>
     );
