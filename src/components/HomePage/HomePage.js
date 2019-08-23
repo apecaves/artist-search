@@ -23,7 +23,6 @@ export default class HomePage extends Component {
       });
   };
 
-
   handlePageChange = (operator) => {
     const { text, page } = this.state;
     this.setState({ page: Number.parseInt(page + operator) });
