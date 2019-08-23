@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Releases from './Releases';
 import { getReleaseList } from '../../services/musicBrainsApi';
 import PropTypes from 'prop-types';
+import Paging from '../Paging';
 
 export default class ReleasesContainer extends Component {
   static propTypes = {
@@ -10,43 +11,34 @@ export default class ReleasesContainer extends Component {
 
   state = {
     releases: [],
-    page: 1
+    page: 1,
+    totalPages: 0
   }
 
   componentDidMount = () => {
     const { page } = this.state;
     return getReleaseList(this.props.match.params.id, page)
-      .then(({ releases }) => {
-        this.setState({ releases });
+      .then((res) => {
+        this.setState({ releases: res.releases, page: 1, totalPages: Math.ceil(res['release-count'] / 10) });
       });
   }
 
-  handleIncrement = () => {
+  handlePageChange = operator => {
     const { page } = this.state;
-    this.setState({ page: Number.parseInt(page + 1) });
-    return getReleaseList(this.props.match.params.id, page + 1)
-      .then(({ releases }) => {
-        this.setState({ releases });
-      });
-  };
-
-  handleDecrement = () => {
-    const { page } = this.state;
-    this.setState({ page: Number.parseInt(page - 1) });
-    return getReleaseList(this.props.match.params.id, page - 1)
-      .then(({ releases }) => {
-        this.setState({ releases });
+    this.setState({ page: Number.parseInt(page + operator) });
+    return getReleaseList(this.props.match.params.id, page + operator)
+      .then((res) => {
+        this.setState({ releases: res.releases, totalPages: Math.ceil(res['release-count'] / 10) });
       });
   };
 
   render() {
-    const { releases } = this.state;
+    const { releases, totalPages, page } = this.state;
 
     return (
       <>
-        <button onClick={this.handleDecrement}>⬸</button>
-        <button onClick={this.handleIncrement}>⤑</button>
-        <Releases releaseList={releases} artistName={this.props.match.params.artistname}/>
+        <Paging handlePageChange={this.handlePageChange} totalPages={totalPages} page={page}/>
+        <Releases releaseList={releases} artistName={this.props.match.params.artistName}/>
       </>
     );
   }
