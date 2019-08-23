@@ -1,8 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Release component renders Release 1`] = `
-<Fragment>
+<section
+  className="Release"
+>
   <Link
+    className="Release"
     to="/release///"
   />
   <p />
@@ -14,5 +17,5 @@ exports[`Release component renders Release 1`] = `
       src="/path/image"
     />
   </Link>
-</Fragment>
+</section>
 `;

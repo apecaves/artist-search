@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Releases component renders Releases 1`] = `<ul />`;
+exports[`Releases component renders Releases 1`] = `
+<ul
+  className="Releases"
+/>
+`;
